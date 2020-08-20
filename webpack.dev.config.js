@@ -5,7 +5,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     //Options pour permettre le hot reload
-    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/index.js']
+    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/client/index.js']
   },
   output: {
     path: path.join(__dirname, 'dist'),

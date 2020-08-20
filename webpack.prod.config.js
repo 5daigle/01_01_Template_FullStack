@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");module.exports = {
   entry: {
-    main: './src/index.js'
+    main: './src/client/index.js'
   },
   output: {
     path: path.join(__dirname, 'dist'),
