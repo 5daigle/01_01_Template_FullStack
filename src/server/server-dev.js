@@ -18,6 +18,8 @@ app.use(webpackDevMiddleware(compiler, {
 //Utiliser le hot reload
 app.use(webpackHotMiddleware(compiler))
 
+//Lorsque le client se connecte pour la première fois (tombe sur le path '/'), 
+//on lui renvoie le fichier index.html compilé dans le dossier de distribution
 app.get('*', (req, res, next) => {
   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
   if (err) {
@@ -29,6 +31,7 @@ app.get('*', (req, res, next) => {
   })
 })
 
+//Port d'écoute des requêtes (si une requête provient d'un autre port, on n'en tiendra pas compte)
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
     console.log(`App listening to ${PORT}....`)
