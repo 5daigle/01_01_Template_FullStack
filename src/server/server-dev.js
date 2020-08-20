@@ -2,6 +2,7 @@ import path from 'path'
 import express from 'express'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
 import config from '../../webpack.dev.config.js'
 
 const app = express(),
@@ -9,10 +10,13 @@ const app = express(),
             HTML_FILE = path.join(DIST_DIR, 'index.html'),
             compiler = webpack(config)
 
-//Pour utiliser le hot reaload en dev
+//Pour utiliser le webpack middleware sur lequel repose le hot reaload (en dev seulement)
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath
 }))
+
+//Utiliser le hot reload
+app.use(webpackHotMiddleware(compiler))
 
 app.get('*', (req, res, next) => {
   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
