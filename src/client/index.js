@@ -7,13 +7,14 @@ import App from "./App";
 ReactDOM.render(
     <App />,
     document.getElementById('root')
-);
+)
 
 // Needed for Hot Module Replacement
-if(typeof(module.hot) !== 'undefined') { // eslint-disable-line no-undef  
-  module.hot.accept()                    // eslint-disable-line no-undef  
+if (module.hot) {
+  module.hot.accept()
 }
 
 //npm start
 //npm run buildDev
 //npm run buildProd
+//http://localhost:8080
