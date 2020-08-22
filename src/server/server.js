@@ -37,13 +37,14 @@ if(process.env.NODE_ENV === 'production') {//Portion de sécurité seulement né
           scriptSrc: ["'self'", "'unsafe-inline'"],
           styleSrc: ["'self'", "'unsafe-inline'"],
           imgSrc: ["'self'", "data:", "*.amazonaws.com"]
-      }
+    }
   }));
   app.use(compress()); //compresser les requêtes pour qu’elles soient plus légères à envoyer
   app.use(cors()); //allow cross origin
 }
 app.use(helmet.referrerPolicy({ policy: 'same-origin' })) //add XSS protection tactic
 
+app.use(express.static(DIST_DIR))
 
 //Lorsque le client se connecte pour la première fois (tombe sur le path '/'), 
 //on lui renvoie le fichier index.html compilé dans le dossier de distribution
