@@ -44,6 +44,7 @@ if(process.env.NODE_ENV === 'production') {//Portion de sécurité seulement né
 }
 app.use(helmet.referrerPolicy({ policy: 'same-origin' })) //add XSS protection tactic
 
+//Ne pas oublier de spécifier, sinon on a une erreur de mime type !!!!
 app.use(express.static(DIST_DIR))
 
 //Lorsque le client se connecte pour la première fois (tombe sur le path '/'), 
